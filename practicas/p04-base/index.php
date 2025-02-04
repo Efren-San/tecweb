@@ -32,15 +32,27 @@
         los únicos valores permitidos son de A-Z y guiones bajos en un inicio<br>
         y después se pueden poner números también.</li>';
         echo '</ul>';
+    ?>
+        
+        <h2>Ejercicio 2</h2>
+    <?php
+       /* $a = "ManejadorSQL"; */
+       /* $b = 'MySQL';*/     
+       /* $c = &$a; */
 
-        //ejercicio2
-        $a = "ManejadorSQL"; 
-        $b = 'MySQL';         
+        $a = "PHP server"; 
+        $b = &$a;         
         $c = &$a;   
         
         echo "$a<br>"; 
         echo "$b<br>";
-        echo "$c";
+        echo "$c<br>";
+
+        echo "<br>Sucede que después de la segunda asignación, tanto 
+        <b>b</b> como <b>c</b> son referencias a <b>a</b>(apuntan al mismo valor).";
+        echo "<br>Por lo tanto, al cambiar <b>a</b>, todas las
+         variables referenciadas también actualizan su valor.";
     ?>
+    
 </body>
 </html>
