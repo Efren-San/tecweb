@@ -23,12 +23,24 @@
         echo '<ul>';
         echo '<li>$_myvar es válida porque inicia con guión bajo.</li>';
         echo '<li>$_7var es válida porque inicia con guión bajo.</li>';
-        echo '<li>myvar es inválida porque no tiene el signo de dolar ($).</li>';
+        echo '<li>myvar es inválida porque no tiene el signo de dolar ($), <br>
+        el signo de dolar es vital para definir una variable php.</li>';
         echo '<li>$myvar es válida porque inicia con una letra.</li>';
         echo '<li>$var7 es válida porque inicia con una letra.</li>';
         echo '<li>$_element1 es válida porque inicia con guión bajo.</li>';
-        echo '<li>$house*5 es inválida porque el símbolo * no está permitido.</li>';
+        echo '<li>$house*5 es inválida porque el símbolo * no está permitido,<br>
+        los únicos valores permitidos son de A-Z y guiones bajos en un inicio<br>
+        y después se pueden poner números también.</li>';
         echo '</ul>';
+
+        //ejercicio2
+        $a = "ManejadorSQL"; 
+        $b = 'MySQL';         
+        $c = &$a;   
+        
+        echo "$a<br>"; 
+        echo "$b<br>";
+        echo "$c";
     ?>
 </body>
 </html>
