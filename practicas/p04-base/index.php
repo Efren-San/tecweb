@@ -178,6 +178,29 @@
         unset($a, $b, $c, $d, $e, $f);
     ?>
 
+<h2>Ejercicio 6 echo con var_export</h2>
+
+    <?php
+        $a = "0";
+        $b = "TRUE";
+        $c = FALSE;
+        $d = ($a OR $b);
+        $e = ($a AND $c);
+        $f = ($a XOR $b);
+        
+        echo "a: $a <br>";  
+        echo "b: $b <br>";  
+        echo "c: " . var_export($c, true) . "<br>";  
+        echo "d: " . var_export($d, true) . "<br>";  
+        echo "e: " . var_export($e, true) . "<br>";  
+        echo "f: " . var_export($f, true) . "<br>";  
+
+        echo "<br>La función <b>var_export</b> en PHP se usa para obtener <br> 
+        una representación en forma de cadena de una variable, similar <br> 
+        a var_dump(), pero con la diferencia de que devuelve una salida <br> 
+        en código PHP que cambia bool a cadena de caracteres en este caso <br>";
+    ?>
+
 
 <?php
 echo 'Versión de PHP: ' . phpversion();
