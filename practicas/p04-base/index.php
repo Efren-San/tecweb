@@ -32,6 +32,8 @@
         los únicos valores permitidos son de A-Z y guiones bajos en un inicio<br>
         y después se pueden poner números también.</li>';
         echo '</ul>';
+
+        unset($_myvar, $_7var, $myvar, $var7, $_element1);
     ?>
         
         <h2>Ejercicio 2</h2>
@@ -52,7 +54,33 @@
         <b>b</b> como <b>c</b> son referencias a <b>a</b>(apuntan al mismo valor).";
         echo "<br>Por lo tanto, al cambiar <b>a</b>, todas las
          variables referenciadas también actualizan su valor.";
+        
+         unset($a, $b, $c);
     ?>
+
+<h2>Ejercicio 3</h2>
+    <?php
+       $a = "PHP5";
+       echo "a: $a <br>";  
+       $z[] = &$a;
+       echo "z[0]: $z[0] <br>";  
+       $b = "5a version de PHP";
+       echo "b: $b <br>";  // b: 250
+       $c = $b * 10;
+       echo "c: $c <br>";  // c: 50
+       $a .= $b;
+       echo "a.: $a <br>";  
+       $b *= $c;
+       echo "b: $b <br>";  
+       $z[0] = "MySQL";
+       echo "z: z[0]: $z[0] <br>"; 
+       
+       unset($a, $b, $c, $z);
+    ?>
+
+<?php
+echo 'Versión de PHP: ' . phpversion();
+?>
     
 </body>
 </html>
