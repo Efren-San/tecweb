@@ -115,7 +115,7 @@
         $a = "PHP5";
         $z[] = &$a;
         $b = "5a version de PHP";
-        $c = $b * 10;
+        $c = 10 * $b;
         $a .= $b;
         $b *= $c;
         $z[0] = "MySQL";
@@ -135,6 +135,21 @@
         mostrarValoresGlobal();
 
         unset($a, $b, $c, $z);
+    ?>
+
+<h2>Ejercicio 5</h2>
+
+    <?php
+        $a = "7 personas";
+        $b = (integer) $a;
+        $a = "9E3";
+        $c = (double) $a;
+
+        echo "a: $a <br>";  
+        echo "b: $b <br>";  
+        echo "c: $c <br>";   
+
+        unset($a, $b, $c);
     ?>
 
 
