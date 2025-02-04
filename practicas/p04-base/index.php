@@ -58,9 +58,8 @@
          unset($a, $b, $c);
     ?>
 
-<h2>Ejercicio 3</h2>
-    <?php
-       $a = "PHP5";
+<!-- <h2>Ejercicio 3 PRUEBA</h2> -->
+      <!--  $a = "PHP5";
        echo "a: $a <br>"; 
 
        $z[] = &$a;
@@ -81,19 +80,17 @@
        $z[0] = "MySQL";
        echo "z[0]: $z[0] <br>"; 
 
-       unset($a, $b, $c, $z);
-       
-    ?>
+       unset($a, $b, $c, $z); -->
 
-<h2>Ejercicio 3 impresión posterior</h2>
+<h2>Ejercicio 3 </h2>
     <?php
         
         $a = "PHP5";
         $z[] = &$a;
         $b = "5a version de PHP";
-        $c = $b * 10;
+        @$c = $b * 10;
         $a .= $b;
-        $b *= $c;
+        @$b *= $c;
         $z[0] = "MySQL";
 
         echo "a: $a <br>";  
@@ -115,9 +112,9 @@
         $a = "PHP5";
         $z[] = &$a;
         $b = "5a version de PHP";
-        $c = 10 * $b;
+        @$c = 10 * $b;
         $a .= $b;
-        $b *= $c;
+        @$b *= $c;
         $z[0] = "MySQL";
 
         function mostrarValoresGlobal() {
@@ -198,9 +195,16 @@
         echo "<br>La función <b>var_export</b> en PHP se usa para obtener <br> 
         una representación en forma de cadena de una variable, similar <br> 
         a var_dump(), pero con la diferencia de que devuelve una salida <br> 
-        en código PHP que cambia bool a cadena de caracteres en este caso <br>";
+        en código PHP que cambia bool a cadena de caracteres en este caso <br><br>";
     ?>
 
+<h2>Ejercicio 7</h2>
+    <?php
+
+        echo "<b>Versión de Apache y PHP:</b> " . $_SERVER['SERVER_SOFTWARE'] . "<br>";
+        echo "<b>Sistema Operativo del Servidor:</b> " . $_SERVER['SERVER_SIGNATURE'] . "<br>";
+        echo "<b>Idioma del Navegador (Cliente):</b> " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
+    ?>
 
 <?php
 echo 'Versión de PHP: ' . phpversion();
