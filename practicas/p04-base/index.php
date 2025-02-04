@@ -61,22 +61,82 @@
 <h2>Ejercicio 3</h2>
     <?php
        $a = "PHP5";
-       echo "a: $a <br>";  
+       echo "a: $a <br>"; 
+
        $z[] = &$a;
        echo "z[0]: $z[0] <br>";  
+
        $b = "5a version de PHP";
-       echo "b: $b <br>";  // b: 250
+       echo "b: $b <br>";  
+
        $c = $b * 10;
-       echo "c: $c <br>";  // c: 50
+       echo "c: $c <br>"; 
+
        $a .= $b;
        echo "a.: $a <br>";  
+
        $b *= $c;
        echo "b: $b <br>";  
+
        $z[0] = "MySQL";
-       echo "z: z[0]: $z[0] <br>"; 
-       
+       echo "z[0]: $z[0] <br>"; 
+
        unset($a, $b, $c, $z);
+       
     ?>
+
+<h2>Ejercicio 3 impresión posterior</h2>
+    <?php
+        
+        $a = "PHP5";
+        $z[] = &$a;
+        $b = "5a version de PHP";
+        $c = $b * 10;
+        $a .= $b;
+        $b *= $c;
+        $z[0] = "MySQL";
+
+        echo "a: $a <br>";  
+        echo "z[0]: $z[0] <br>";  
+        echo "b: $b <br>";  
+        echo "c: $c <br>";  
+        echo "a.: $a <br>"; 
+        echo "b: $b <br>";  
+        echo "z[0]: $z[0] <br>"; 
+
+        unset($a, $b, $c, $z);
+    ?>
+
+
+<h2>Ejercicio 4 con global</h2>
+
+    <?php
+        
+        $a = "PHP5";
+        $z[] = &$a;
+        $b = "5a version de PHP";
+        $c = $b * 10;
+        $a .= $b;
+        $b *= $c;
+        $z[0] = "MySQL";
+
+        function mostrarValoresGlobal() {
+            global $a, $b, $c, $z;
+            echo "a: $a <br>";  
+            echo "z[0]: $z[0] <br>";  
+            echo "b: $b <br>";  
+            echo "c: $c <br>";  
+            echo "a.: $a <br>"; 
+            echo "b: $b <br>";  
+            echo "z[0]: $z[0] <br>"; 
+
+        }
+
+        mostrarValoresGlobal();
+
+        unset($a, $b, $c, $z);
+    ?>
+
 
 <?php
 echo 'Versión de PHP: ' . phpversion();
