@@ -45,3 +45,26 @@
     ' iteración/es para encontrar el <b>impar, par e impar</b>';
   }
 
+
+  function whileNum($num, $encontrado) {
+    $num=$_GET['num1'];
+      while($encontrado==false) {
+          $Numval=mt_rand(100, 999);
+          if($Numval%$num==0) {
+              echo $Numval .' es un número aleatorio que es múltiplo de '. $num;
+              $encontrado=true;
+          }
+      }
+  }
+  
+  function doWhileNum($num, $encontrado) {
+    $num=$_GET['num2'];
+      do{
+          $Numval=mt_rand(100, 999);
+          if($Numval%$num==0) {
+              echo $Numval .' es un número aleatorio que es múltiplo de '. $num;
+              $encontrado=true;
+          }
+      }while($encontrado==false);
+  }
+
