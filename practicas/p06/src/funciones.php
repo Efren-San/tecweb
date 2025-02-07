@@ -5,6 +5,7 @@
         {
         echo '<h3>R= El número '.$num.' SÍ es múltiplo de 5 y 7.</h3>';
         }
+
     else
         {
         echo '<h3>R= El número '.$num.' NO es múltiplo de 5 y 7.</h3>';
@@ -68,3 +69,16 @@
       }while($encontrado==false);
   }
 
+  function ASCIIabc($arreglo) {
+    for($i=97; $i<123; $i++) {
+        $arreglo[$i]=chr($i);
+    }
+        echo '<table border="1">';
+        echo '<tr><th>ASCII</th><th>Valor</th></tr>';
+
+    foreach($arreglo as $key => $value) {
+        echo '<tr> <td>'. $key .'</td> <td>'. $value .'</td> </tr>';
+    }
+        echo '</table>';
+}
+?>
