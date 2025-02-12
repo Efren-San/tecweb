@@ -21,6 +21,7 @@
 		if ( $result = $link->query("SELECT * FROM productos WHERE id = '{$id}'") ) 
 		{
 			$row = $result->fetch_array(MYSQLI_ASSOC);
+			
 			/** útil para liberar memoria asociada a un resultado con demasiada información */
 			$result->free();
 		}
