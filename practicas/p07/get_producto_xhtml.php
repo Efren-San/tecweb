@@ -1,84 +1,70 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
-
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Productos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-
-<body>
-    <?php
-        /** SE CREA EL OBJETO DE CONEXION */
-        @$link = new mysqli('localhost', 'root', 'zebraconz', 'marketzone');
-
-        /** comprobar la conexión */
-        if ($link->connect_errno) {
-            die('Falló la conexión: ' . $link->connect_error . '<br/>');
-        }
-
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-        $tope = isset($_GET['tope']) ? $_GET['tope'] : null;
-        
-        if (!empty($id)) {
-            // Consulta para un solo producto
-            $query = "SELECT * FROM productos WHERE id = '{$id}'";
-        } else {
-            // Consulta para todos los productos o filtrados por unidades
-            $query = "SELECT * FROM productos";
-            if (!empty($tope)) { 
-                $query .= " WHERE unidades <= {$tope}";
-            }
-        }
-
-        $result = $link->query($query);
-        
-        if (!$result) {
-            die('Error en la consulta: ' . $link->error);
-        }
-        
-        $productos = $result->fetch_all(MYSQLI_ASSOC);
-        $link->close();
-    ?>
-
-    <div class="container">
-        <?php if (!empty($productos)) : ?>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Precio</th>
-                        <th>Unidades</th>
-                        <th>Detalles</th>
-                        <th>Imagen</th>
-                    </tr>
-                </thead>
-                <!--La instrucción foreach: enumera los elementos de una colección y 
-                ejecuta su cuerpo(body) para cada elemento de la colección, usado para
-                que se vean todos los productos. -->
-                <tbody>
-                     <?php foreach ($productos as $producto) : ?> 
-                        <tr>
-                            <th scope="row"><?= $producto['id'] ?></th>
-                            <td><?= $producto['nombre'] ?></td>
-                            <td><?= $producto['marca'] ?></td>
-                            <td><?= $producto['modelo'] ?></td>
-                            <td><?= $producto['precio'] ?></td>
-                            <td><?= $producto['unidades'] ?></td>
-                            <td><?= $producto['detalles'] ?></td>
-                            <td><img src="<?= $producto['imagen'] ?> "width = 50 >"</td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php else : ?>
-            <p class="alert">No se encontraron productos.</p>
-        <?php endif; ?> <!--  Si productos está vacío, entonces se mueatra un alert warning-->
-    </div> 
-</body>
-</html>
+    
+	<?php
+	if(isset($_GET['id']))
+		$id = $_GET['id'];
+	if (!empty($id))
+	{
+		/** SE CREA EL OBJETO DE CONEXION */
+		@$link = new mysqli('localhost', 'root', 'zebraconz', 'marketzone');	
+		/** comprobar la conexión */
+		if ($link->connect_errno) 
+		{
+			die('Falló la conexión: '.$link->connect_error.'<br/>');
+			    /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
+		}
+		/** Crear una tabla que no devuelve un conjunto de resultados */
+		if ( $result = $link->query("SELECT * FROM productos WHERE id = '{$id}'") ) 
+		{
+			$row = $result->fetch_array(MYSQLI_ASSOC);
+			/** útil para liberar memoria asociada a un resultado con demasiada información */
+			$result->free();
+		}
+		$link->close();
+	}
+	?>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Producto</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+	<body>
+		<h3>PRODUCTO</h3>
+		<br/>
+		
+		<?php if( isset($row) ) : ?>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Marca</th>
+					<th scope="col">Modelo</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Unidades</th>
+					<th scope="col">Detalles</th>
+					<th scope="col">Imagen</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row"><?= $row['id'] ?></th>
+						<td><?= $row['nombre'] ?></td>
+						<td><?= $row['marca'] ?></td>
+						<td><?= $row['modelo'] ?></td>
+						<td><?= $row['precio'] ?></td>
+						<td><?= $row['unidades'] ?></td>
+						<td><?= $row['detalles'] ?></td>
+						<td><img src=<?= $row['imagen'] ?> ></td>
+					</tr>
+				</tbody>
+			</table>
+		<?php elseif(!empty($id)) : ?>
+			 <script>
+                alert('El ID del producto no existe');
+             </script>
+		<?php endif; ?>
+	</body>
+</html
