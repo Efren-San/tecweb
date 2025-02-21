@@ -60,7 +60,7 @@
                 </thead>
                 <!--La instrucción foreach: enumera los elementos de una colección y 
                 ejecuta su cuerpo(body) para cada elemento de la colección, usado para
-                que se vean todos los productos. -->
+                que se vean todos los productos y no se necesite tope o id. -->
                 <tbody>
                      <?php foreach ($productos as $producto) : ?> 
                         <tr>
