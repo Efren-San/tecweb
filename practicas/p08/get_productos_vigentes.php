@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
     <?php
         @$link = new mysqli('localhost', 'root', '1234', 'marketzone');
 
@@ -20,6 +21,7 @@
         <title>Productos</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
+
     <body>
         <h3>PRODUCTOS</h3>
         <br/>
@@ -52,10 +54,12 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
         <?php else : ?>
             <script>
                 alert('No hay productos con unidades <?= $tope ?>');
             </script>
+            
         <?php endif; ?>
     </body>
 </html>
