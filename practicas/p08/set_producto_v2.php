@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-		<title>Registro en la Base de Datos Completado</title>
+		<title>Registro completado en la Base de datos</title>
 		<style type="text/css">
 			body {margin: 20px; 
 			background-color: #C4DF9B;
@@ -14,7 +14,7 @@
 		</style>
 	</head>
 	<body>
-		<h1>Aquí se muestran los datos agregados para la inserción del producto (en caso de éxito): </h1>
+		<h1>Aquí se muestran los datos agregados para la inserción del producto, si hubo éxito verá los datos ingresados: </h1>
 
         <?php
         $nombre = $_POST['name'];
@@ -74,13 +74,13 @@
         else
         {
             if($nomResultado->num_rows != 0) {
-                echo 'Nombre repetido: <em>' . $nombre . '</em> existe en la base de datos. <br>';
+                echo 'Nombre repetido: <em>' . $nombre . '</em> existe en la base de datos =(. <br>';
             }
             if($marcaResultado->num_rows != 0) {
-                echo 'Marca repetida: <em>' . $marca . '</em> existe en la base de datos. <br>';
+                echo 'Marca repetida: <em>' . $marca . '</em> existe en la base de datos =(. <br>';
             }
             if($modeloResultado->num_rows != 0) {
-                echo 'Modelo repetido: <em>' . $modelo . '</em> existe en la base de datos. <br>';
+                echo 'Modelo repetido: <em>' . $modelo . '</em> existe en la base de datos =(. <br>';
             }
         }
         $link->close();
