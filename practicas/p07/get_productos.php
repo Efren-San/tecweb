@@ -14,7 +14,7 @@
 	if (!empty($tope))
 	{
 		/** SE CREA EL OBJETO DE CONEXION */
-		@$link = new mysqli('localhost', 'root', 'zebraconz', 'marketzone');
+		@$link = new mysqli('localhost', 'root', '1234', 'marketzone');
         /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
 
 		/** comprobar la conexión */
@@ -25,7 +25,7 @@
 		}
 
 		/** Crear una tabla que no devuelve un conjunto de resultados */
-		if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope") ) 
+		if ( $result = $link->query("SELECT * FROM productos1 WHERE unidades <= $tope") ) 
 		{
             /** Se extraen las tuplas obtenidas de la consulta */
 			$row = $result->fetch_all(MYSQLI_ASSOC);

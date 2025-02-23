@@ -12,7 +12,7 @@
 <body>
     <?php
         /** SE CREA EL OBJETO DE CONEXION */
-        @$link = new mysqli('localhost', 'root', 'zebraconz', 'marketzone');
+        @$link = new mysqli('localhost', 'root', '1234', 'marketzone');
 
         /** comprobar la conexión */
         if ($link->connect_errno) {
@@ -24,10 +24,10 @@
         
         if (!empty($id)) {
             // Consulta para un solo producto
-            $query = "SELECT * FROM productos WHERE id = '{$id}'";
+            $query = "SELECT * FROM productos1 WHERE id = '{$id}'";
         } else {
             // Consulta para todos los productos o filtrados por unidades
-            $query = "SELECT * FROM productos";
+            $query = "SELECT * FROM productos1";
             if (!empty($tope)) { 
                 $query .= " WHERE unidades <= {$tope}";
             }

@@ -8,7 +8,7 @@
 	if (!empty($id))
 	{
 		/** SE CREA EL OBJETO DE CONEXION */
-		@$link = new mysqli('localhost', 'root', 'zebraconz', 'marketzone');	
+		@$link = new mysqli('localhost', 'root', '1234', 'marketzone');	
 
 		/** comprobar la conexión */
 		if ($link->connect_errno) 
@@ -18,7 +18,7 @@
 		}
 
 		/** Crear una tabla que no devuelve un conjunto de resultados */
-		if ( $result = $link->query("SELECT * FROM productos WHERE id = '{$id}'") ) 
+		if ( $result = $link->query("SELECT * FROM productos1 WHERE id = '{$id}'") ) 
 		{
 			$row = $result->fetch_array(MYSQLI_ASSOC);
 			

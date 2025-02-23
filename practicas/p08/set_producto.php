@@ -8,7 +8,7 @@ $unidades = 1;
 $imagen   = 'img/imagen.png';
 
 /** SE CREA EL OBJETO DE CONEXION */
-@$link = new mysqli('localhost', 'root', '12345678a', 'marketzone');	
+@$link = new mysqli('localhost', 'root', '1234', 'marketzone');	
 
 /** comprobar la conexión */
 if ($link->connect_errno) 
@@ -18,7 +18,7 @@ if ($link->connect_errno)
 }
 
 /** Crear una tabla que no devuelve un conjunto de resultados */
-$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
+$sql = "INSERT INTO productos1 VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
 if ( $link->query($sql) ) 
 {
     echo 'Producto insertado con ID: '.$link->insert_id;
