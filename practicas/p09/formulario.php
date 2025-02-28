@@ -16,10 +16,15 @@
 
     <form id="miFormulario" onsubmit="" method="post">
         <fieldset>
-            <legend>Actualiza los datos personales de esta persoa:</legend>
+            <legend>Actualiza los datos personales de esta persona:</legend>
             <ul>
-                <li><label>Nombre:</label> <input type="text" name="name" value="<?= !empty($_POST['nombre'])?$_POST['nombre']:$_GET['nombre'] ?>"></li>
-                <li><label>Edad:</label> <input type="text" name="age" value="<?= !empty($_POST['edad'])?$_POST['edad']:$_GET['edad'] ?>"></li>
+            <li><label>Nombre:</label> 
+    <input type="text" name="name" value="<?= isset($_POST['nombre']) ? $_POST['nombre'] : ($_GET['nombre'] ?? '') ?>">
+</li>
+<li><label>Edad:</label> 
+    <input type="text" age="age" value="<?= isset($_POST['edad']) ? $_POST['edad'] : ($_GET['edad'] ?? '') ?>">
+</li>
+
             </ul>
         </fieldset>
         <p>
