@@ -13,7 +13,7 @@
   <body>
     <h1>Registro de sombreros en la tabla</h1>
 
-    <p>¿Vamos a agregar un sombrero, vaquero? <em>Rellena los datos con la información de los sombreros</p>
+    <p>¿Quieres actualizar un sombrero en la base de datos, vaquero? 
 
     <form id="formularioProduct" action="update_producto.php" method="post">
 
@@ -60,7 +60,7 @@
       </fieldset>
 
       <p>
-        <input type="submit" value="¡Enviar libro!">
+        <input type="submit" value="¡Sombrero puesto!">
         <input type="reset">
       </p>
 
