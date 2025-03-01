@@ -11,68 +11,60 @@
   </head>
 
   <body>
-    <h1>Actualización de sombreros en &ldquo;marketzone&rdquo;</h1>
+    <h1>Registro de sombreros en la tabla</h1>
 
-    <p>¿Quieres actualizar un sombrero en la base de datos, vaquero?</p>
+    <p>¿Vamos a agregar un sombrero, vaquero? <em>Rellena los datos con la información de los sombreros</p>
 
     <form id="formularioProduct" action="update_producto.php" method="post">
 
       <fieldset>
-        <legend>Información del Sombrero</legend>
+        <legend>Información del sombrero</legend>
 
         <ul>
-          <li><label for="form-name">Nombre:</label><br>
-            <input type="text" name="name" id="form-name" placeholder="Hasta 100 caracteres" 
-                   value="<?= isset($_POST['nombre']) ? $_POST['nombre'] : (isset($_GET['nombre']) ? $_GET['nombre'] : '') ?>">
+          <li><label for="form-name">Nombre:</label><br><input type="text" name="name" id="form-name" placeholder="Hasta 100 caracteres" value="<?=!empty($_POST['nombre'])?$_POST['nombre']:$_GET['nombre'] ?>"></li><br>
+          
+          <?php
+          if(isset($_POST['marca'])) {
+            $marcaSeleccionada=$_POST['marca'];
+          }
+          else {
+            $marcaSeleccionada='';
+          }
+          ?>
+
+          <li>
+              <label for="form-brand">Marca:</label><br>
+              <select name="brand" id="form-brand">
+                  <option disabled selected>Seleccionar</option>
+                  <option value="Sombreros 2 hermanos" <?php if($marcaSeleccionada=='Sombreros 2 hermanos'){echo 'selected';}?>>Sombreros 2 hermanos</option>
+                  <option value="El rancho negro" <?php if($marcaSeleccionada=='El rancho negro'){echo 'selected';}?>>El rancho negro</option>
+                  <option value="Sombreros NL" <?php if($marcaSeleccionada=='Sombreros NL'){echo 'selected';}?>>Sombreros NL</option>
+                  <option value="El vaquero azul" <?php if($marcaSeleccionada=='El vaquero azul'){echo 'selected';}?>>El vaquero azul</option>
+                  <option value="Arthur Morgan importados" <?php if($marcaSeleccionada=='Arthur Morgan importados'){echo 'selected';}?>>Arthur Morgan importados</option>
+              </select>
           </li><br>
 
-          <li><label for="form-brand">Marca:</label><br>
-            <select name="brand" id="form-brand">
-              <option selected disabled>Seleccionar</option>
-              <option>Sombreros del Sol</option>
-              <option>Elegancia en la Sombra</option>
-              <option>El Rincón del Sombrero</option>
-              <option>Viento y Ala</option>
-              <option>Coronas de Fieltro</option>
-            </select>
-          </li><br>
+          
+          <li><label for="form-model">Modelo:</label><br><input type="text" name="model" id="form-model" placeholder="Hasta 25 caracteres" value="<?= !empty($_POST['modelo'])?$_POST['modelo']:$_GET['modelo'] ?>"></li><br>
+          
+          <li><label for="form-price">Precio:</label><br><input type="number" name="price" id="form-price" step="0.01" value="<?= !empty($_POST['precio'])?$_POST['precio']:$_GET['precio'] ?>"></li><br>
+          
+          <li><label for="form-quantity">Unidades:</label><br><input type="number" name="quantity" id="form-quantity" value="<?= !empty($_POST['unidades'])?$_POST['unidades']:$_GET['unidades'] ?>"></li><br>
+          
+          <li><label for="form-details">Detalles:</label><br><textarea name="details" rows="4" cols="50" id="form-details" placeholder="Hasta 250 caracteres"><?= !empty($_POST['detalles'])?$_POST['detalles']:$_GET['detalles'] ?></textarea></li><br>
+          
+          <li><label for="form-img">Nombre del archivo de imagen:</label><br><input type="text" name="img" id="img" value="<?= !empty($_POST['imagen'])?$_POST['imagen']:$_GET['imagen'] ?>"></li>
 
-          <li><label for="form-model">Modelo:</label><br>
-            <input type="text" name="model" id="form-model" placeholder="Hasta 25 caracteres" 
-                   value="<?= isset($_POST['modelo']) ? $_POST['modelo'] : (isset($_GET['modelo']) ? $_GET['modelo'] : '') ?>">
-          </li><br>
-
-          <li><label for="form-price">Precio:</label><br>
-            <input type="number" name="price" id="form-price" step="0.01" 
-                   value="<?= isset($_POST['precio']) ? $_POST['precio'] : (isset($_GET['precio']) ? $_GET['precio'] : '') ?>">
-          </li><br>
-
-          <li><label for="form-quantity">Unidades:</label><br>
-            <input type="number" name="quantity" id="form-quantity" 
-                   value="<?= isset($_POST['unidades']) ? $_POST['unidades'] : (isset($_GET['unidades']) ? $_GET['unidades'] : '') ?>">
-          </li><br>
-
-          <li><label for="form-details">Detalles:</label><br>
-            <textarea name="details" rows="4" cols="50" id="form-details" placeholder="Hasta 250 caracteres">
-              <?= isset($_POST['detalles']) ? $_POST['detalles'] : (isset($_GET['detalles']) ? $_GET['detalles'] : '') ?>
-            </textarea>
-          </li><br>
-
-          <li><label for="form-img">Nombre del archivo de imagen:</label><br>
-            <input type="text" name="img" id="img" 
-                   value="<?= isset($_POST['imagen']) ? $_POST['imagen'] : (isset($_GET['imagen']) ? $_GET['imagen'] : '') ?>">
-          </li>
-
+          <li hidden><label for="form-id">ID</label><br><input type="text" name="id" id="id" value="<?= !empty($_POST['id'])?$_POST['id']:$_GET['id'] ?>"></li>
         </ul>
       </fieldset>
 
       <p>
-        <input type="submit" value="¡Sombrero puesto!">
+        <input type="submit" value="¡Enviar libro!">
         <input type="reset">
       </p>
 
     </form>
-
     <script>
       let form = document.getElementById("formularioProduct");
       
@@ -119,7 +111,7 @@
         
         if(imagen.trim() === "") {
           imagen = "imagen1";
-          document.getElementById("img").value = imagen;
+          document.getElementById("img").value =  imagen;
         }
       });
     </script>
