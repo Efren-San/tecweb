@@ -133,6 +133,7 @@ function agregarProducto(e) {
         });
         return;
     }
+    document.getElementById("errores").innerHTML = "";
 
     // SE OBTIENE EL STRING DEL JSON FINAL
     productoJsonString = JSON.stringify(finalJSON,null,2);
@@ -143,8 +144,11 @@ function agregarProducto(e) {
     client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
     client.onreadystatechange = function () {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
+
         if (client.readyState == 4 && client.status == 200) {
             console.log(client.responseText);
+            var mensaje = client.responseText;
+            window.alert(mensaje);
         }
     };
     client.send(productoJsonString);
