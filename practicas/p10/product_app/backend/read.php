@@ -7,7 +7,7 @@
     if( isset($_POST['producto']) ) {
         $producto = $_POST['producto'];
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-        if ( $result = $conexion->query("SELECT * FROM productos WHERE nombre LIKE '%{$producto}%' OR marca LIKE '%{$producto}%' OR detalles LIKE '%{$producto}%'") ) {
+        if ( $result = $conexion->query("SELECT * FROM productos1 WHERE nombre LIKE '%{$producto}%' OR marca LIKE '%{$producto}%' OR detalles LIKE '%{$producto}%'") ) {
             // SE OBTIENEN LOS RESULTADOS MEDIANTE RECORRIDOS
 			while ($row = $result->fetch_array()) {
                $data[] = $row;

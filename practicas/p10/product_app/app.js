@@ -11,7 +11,7 @@ var baseJSON = {
 function buscarProducto(e) {
     e.preventDefault();
     
-    var producto = document.getElementById('search').value.trim;
+    var producto = document.getElementById('search').value.trim();
 
     if(producto !== '') {
         var client = getXMLHttpRequest();
@@ -21,11 +21,11 @@ function buscarProducto(e) {
             if (client.readyState == 4 && client.status == 200) {
                 console.log('[CLIENTE]\n'+client.responseText);
                 
-                let productos = JSON.parse(client.responseText);
+                let productos1 = JSON.parse(client.responseText);
             
-                if (Object.keys(productos).length > 0) {
+                if (Object.keys(productos1).length > 0) {
                     let template = '';
-                    productos.forEach(producto => {
+                    productos1.forEach(producto => {
                         let descripcion = '';
                         descripcion += '<li>precio: '+producto.precio+'</li>';
                         descripcion += '<li>unidades: '+producto.unidades+'</li>';
@@ -42,17 +42,17 @@ function buscarProducto(e) {
                         `;
                     });
 
-                    document.getElementById("productos").innerHTML = template;
+                    document.getElementById("productos1").innerHTML = template;
                 }
             }
             else {
-                document.getElementById("productos").innerHTML = '<tr><td colspan="3">No se encontraron productos</td></tr>';
+                document.getElementById("productos1").innerHTML = '<tr><td colspan="3">No se encontraron productos</td></tr>';
             }
         };
         client.send("producto=" + producto);
     }
     else {
-        document.getElementById("productos").innerHTML = '<tr><td colspan="3">No se encontraron productos</td></tr>';
+        document.getElementById("productos1").innerHTML = '<tr><td colspan="3">No se encontraron productos</td></tr>';
     }
 }
 
