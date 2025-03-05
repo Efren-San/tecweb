@@ -68,6 +68,71 @@ function agregarProducto(e) {
     finalJSON['nombre'] = document.getElementById('name').value;
 
     // AQUÍ SE HACEN LAS VERIFICACIONES
+    let hayErrores = false;
+    let mensajesErrores = []; // En este arreglo se guardan los mensajes de error que serán impresos al final de las verificaciones.
+
+    if (finalJSON.nombre.trim() === "" || finalJSON.nombre.length > 100) {
+        mensajesErrores.push("Error: Nombre supera el límite de caracteres o es vacío.");
+        hayErrores = true;
+    }
+
+    if (!finalJSON.precio || isNaN(finalJSON.precio) || parseFloat(finalJSON.precio) <= 99.99) {
+        mensajesErrores.push("Error: Precio es vacío o no supera los 99.99 en valor");
+        hayErrores = true;
+    }
+
+    if (!finalJSON.unidades || isNaN(finalJSON.unidades) || Number(finalJSON.unidades) < 0) {
+        mensajesErrores.push("Error: Cantidad es vacía o es menor a 0");
+        hayErrores = true;
+    }
+
+    if (finalJSON.modelo.trim() === "XX-000" || finalJSON.modelo.length > 25 || !/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9\sáéíóúÁÉÍÓÚüÜñÑ-]+$/.test(finalJSON.modelo)) {
+        mensajesErrores.push("Error: Modelo supera el límite de caracteres, es vacío o no es un texto alfanumérico.");
+        hayErrores = true;
+    }
+
+    if (finalJSON.marca.trim() === "" || finalJSON.marca.trim() === "NA") {
+        mensajesErrores.push("Error: Marca es vacía o no válida.");
+        hayErrores = true;
+    } else {
+        let marcasValidas = [
+            "Sombreros 2 hermanos",
+            "El rancho negro",
+            "Sombreros NL",
+            "El vaquero azul",
+            "Arthur Morgan importados"
+        ];
+
+        if (!marcasValidas.includes(finalJSON.marca.trim())) {
+            mensajesErrores.push("Error: Marca no encontrada. Posibles marcas: a) Sombreros 2 hermanos, b) El rancho negro, c) Sombreros NL, d) El vaquero azul y e) Arthur Morgan importados.");
+            hayErrores = true;
+        }
+    }
+
+    if (finalJSON.detalles.trim() !== "NA" && finalJSON.detalles.trim() !== "") {
+        if (finalJSON.detalles.length > 250) {
+            mensajesErrores.push("Error: Los detalles superan el límite permitido de caracteres.");
+            hayErrores = true;
+        }
+    } else {
+        finalJSON.detalles = "";
+    }
+
+    if (finalJSON.imagen.trim() === "") {
+        finalJSON.imagen = "img/default.png";
+    }
+
+    if (hayErrores) {
+        document.getElementById("errores").innerHTML = "";
+        
+        // Se va moviendo en el arreglo, evitando hacerlo manualmente
+        mensajesErrores.forEach(mensaje => {
+            let divError = document.createElement("div");
+            divError.textContent = mensaje;
+            document.getElementById("errores").appendChild(divError); // se inserta divError en la etiqueta div con id = errores en el HTML.
+        });
+        return;
+    }
 
     // SE OBTIENE EL STRING DEL JSON FINAL
     productoJsonString = JSON.stringify(finalJSON,null,2);
