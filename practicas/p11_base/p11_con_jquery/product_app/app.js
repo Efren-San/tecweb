@@ -90,7 +90,7 @@ $(function () {
                     let template_bar = '';
                     productos.forEach(producto => {
                         // SE COMPRUEBA QUE SE OBTIENE UN OBJETO POR ITERACIÓN
-                        console.log(producto);
+                        //console.log(producto);
 
                         // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
                         let descripcion = '';
@@ -161,8 +161,8 @@ $(function () {
             hayErrores = true;
         }
     
-        if (!finalJSON.precio || isNaN(finalJSON.precio) || !/^\d+(\.\d{1,2})?$/.test(finalJSON.precio) || parseFloat(finalJSON.precio) <= 99.99) {
-            mensajesErrores.push("Error: Precio es vacío, no supera los 99.99 en valor o tiene más de dos decimales");
+        if (!finalJSON.precio || isNaN(finalJSON.precio) || parseFloat(finalJSON.precio) <= 99.99) {
+            mensajesErrores.push("Error: Precio es vacío o no supera los 99.99 en valor");
             hayErrores = true;
         }
     
@@ -179,17 +179,18 @@ $(function () {
         if (finalJSON.marca.trim() === "" || finalJSON.marca.trim() === "NA") {
             mensajesErrores.push("Error: Marca es vacía o no válida.");
             hayErrores = true;
-        } else {
+        }
+        else {
             let marcasValidas = [
-                "Pluma Eterna",
-                "Luz y Tinta",
-                "Vórtice Literario",
-                "Alas de Papel",
-                "Sombras y Destello"
+                "Sombreros 2 hermanos",
+                "El rancho negro",
+                "Sombreros NL",
+                "El vaquero azul",
+                "Arthur Morgan importados"
             ];
     
             if (!marcasValidas.includes(finalJSON.marca.trim())) {
-                mensajesErrores.push("Error: Marca no encontrada. Posibles marcas: a) Pluma Eterna, b) Luz y Tinta, c) Vórtice Literario, d) Alas de Papel y e) Sombras y Destello");
+                mensajesErrores.push("Error: Marca no encontrada. Posibles marcas: a) Sombreros 2 hermanos, b) El rancho negro, c) Sombreros NL, d) El vaquero azul y e) Arthur Morgan importados.");
                 hayErrores = true;
             }
         }
@@ -199,7 +200,8 @@ $(function () {
                 mensajesErrores.push("Error: Los detalles superan el límite permitido de caracteres.");
                 hayErrores = true;
             }
-        } else {
+        } 
+        else {
             finalJSON.detalles = "";
         }
     
