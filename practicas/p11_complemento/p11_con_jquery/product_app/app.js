@@ -1,19 +1,18 @@
-// JSON BASE A MOSTRAR EN FORMULARIO
-var baseJSON = {
-    "precio": 0.0,
-    "unidades": 1,
-    "modelo": "XX-000",
-    "marca": "NA",
-    "detalles": "NA",
-    "imagen": "img/default.png"
-  };
-
 $(document).ready(function(){
     let edit = false;
 
-    let JsonString = JSON.stringify(baseJSON,null,2);
-    $('#description').val(JsonString);
+    function reiniciarValores() { // Reinicia los campos
+        $('#name').val('');
+        $('#price').val('0.0');
+        $('#quantity').val('0'); 
+        $('#model').val('XX-000');
+        $('#description').val('NA');
+        $('#image').val('img/default.png');
+        $('#brand').val('NA');
+    }
+
     $('#product-result').hide();
+    reiniciarValores();
     listarProductos();
 
     function listarProductos() {
@@ -44,7 +43,7 @@ $(document).ready(function(){
                                 <td><a href="#" class="product-item">${producto.nombre}</a></td>
                                 <td><ul>${descripcion}</ul></td>
                                 <td>
-                                    <button class="product-delete btn btn-danger" onclick="eliminarProducto()">
+                                    <button class="product-delete btn btn-danger" >
                                         Eliminar
                                     </button>
                                 </td>
@@ -119,14 +118,21 @@ $(document).ready(function(){
     });
 
     $('#product-form').submit(e => {
-        $('button.btn-primary').text("Agregar Producto");
         e.preventDefault();
+        $('button.btn-primary').text("Agregar Producto");
+        
 
-        // SE CONVIERTE EL JSON DE STRING A OBJETO
-        let postData = JSON.parse( $('#description').val() );
-        // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-        postData['nombre'] = $('#name').val();
-        postData['id'] = $('#productId').val();
+ 
+ const postData = { // Objeto que contenga la información del formulario.
+    nombre: $('#name').val(),
+    id: $('#productId').val(),
+    precio: $('#price').val(),
+    unidades: $('#quantity').val(),
+    modelo: $('#model').val(),
+    marca: $('#brand option:selected').text(),
+    detalles: $('#description').val(),
+    imagen: $('#image').val()
+};
 
         /**
          * AQUÍ DEBES AGREGAR LAS VALIDACIONES DE LOS DATOS EN EL JSON
@@ -146,8 +152,7 @@ $(document).ready(function(){
                         <li style="list-style: none;">message: ${respuesta.message}</li>
                     `;
             // SE REINICIA EL FORMULARIO
-            $('#name').val('');
-            $('#description').val(JsonString);
+            reiniciarValores();
             // SE HACE VISIBLE LA BARRA DE ESTADO
             $('#product-result').show();
             // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
@@ -171,7 +176,6 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.product-item', (e) => {
-        $('button.btn-primary').text("Modificar Producto");
         const element = $(this)[0].activeElement.parentElement.parentElement;
         const id = $(element).attr('productId');
         $.post('./backend/product-single.php', {id}, (response) => {
@@ -179,20 +183,38 @@ $(document).ready(function(){
             let product = JSON.parse(response);
             // SE INSERTAN LOS DATOS ESPECIALES EN LOS CAMPOS CORRESPONDIENTES
             $('#name').val(product.nombre);
+            $('#price').val(product.precio);
+            $('#quantity').val(product.unidades);
+            $('#model').val(product.modelo);
+             
+            let marca = product.marca; 
+            if(marca == 'Sombreros 2 hermanos')
+                marca = 'sombreros2hermanos';
+            else if(marca == 'El rancho negro')
+                marca = 'ranchonegro';
+            else if(marca == 'Sombreros NL') 
+                marca = 'sombrerosNL';
+            else if(marca == 'El vaquero azul')
+                marca = 'vaqueroazul';
+            else
+                marca = 'Arthur Morgan importados';
+ 
+            $('#brand').val(marca);
+            $('#description').val(product.detalles);
+            $('#image').val(product.imagen);
+
             // EL ID SE INSERTA EN UN CAMPO OCULTO PARA USARLO DESPUÉS PARA LA ACTUALIZACIÓN
             $('#productId').val(product.id);
             // SE ELIMINA nombre, eliminado E id PARA PODER MOSTRAR EL JSON EN EL <textarea>
-            delete(product.nombre);
-            delete(product.eliminado);
-            delete(product.id);
+
             // SE CONVIERTE EL OBJETO JSON EN STRING
-            let JsonString = JSON.stringify(product,null,2);
+            
             // SE MUESTRA STRING EN EL <textarea>
-            $('#description').val(JsonString);
             
             // SE PONE LA BANDERA DE EDICIÓN EN true
             edit = true;
         });
         e.preventDefault();
+        $('button.btn-primary').text("Modificar Producto");
     });    
 });
