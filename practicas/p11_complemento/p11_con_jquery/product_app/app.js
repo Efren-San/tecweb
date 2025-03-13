@@ -119,6 +119,7 @@ $(document).ready(function(){
     });
 
     $('#product-form').submit(e => {
+        $('button.btn-primary').text("Agregar Producto");
         e.preventDefault();
 
         // SE CONVIERTE EL JSON DE STRING A OBJETO
@@ -170,6 +171,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.product-item', (e) => {
+        $('button.btn-primary').text("Modificar Producto");
         const element = $(this)[0].activeElement.parentElement.parentElement;
         const id = $(element).attr('productId');
         $.post('./backend/product-single.php', {id}, (response) => {
