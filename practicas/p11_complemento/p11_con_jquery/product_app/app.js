@@ -350,16 +350,16 @@ $(document).ready(function () {
             $('#model').val(product.modelo);
 
             let marca = product.marca; 
-            if (marca == 'Pluma Eterna')
-                marca = 'plumaEterna';
-            else if (marca == 'Luz y Tinta')
-                marca = 'luzTinta';
-            else if (marca == 'Vortice Literario') // No pasa ciertos caracteres especiales
-                marca = 'vorticeLiterario';
-            else if (marca == 'Alas de Papel')
-                marca = 'alasPapel';
+            if (marca == 'Sombreros 2 hermanos')
+                marca = '2hermanos';
+            else if (marca == 'El rancho negro')
+                marca = 'Elranchonegro';
+            else if (marca == 'Sombreros NL') // No pasa ciertos caracteres especiales
+                marca = 'SombrerosNL';
+            else if (marca == 'El vaquero azul')
+                marca = 'Elvaqueroazul';
             else
-                marca = 'sombrasDestello';
+                marca = 'Arthur Morgan importados';
 
             $('#brand').val(marca);
             $('#description').val(product.detalles);
