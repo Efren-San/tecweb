@@ -7,7 +7,7 @@
     class Products extends DataBase {
         private $data = NULL;
 
-        public function __construct($db, $user='root', $pass='1234') {
+        public function __construct($db, $user='root', $pass='12345678a') {
             $this->data = array();
             parent::__construct($db, $user, $pass);
         }
@@ -21,7 +21,7 @@
                 $jsonOBJ = json_decode( json_encode($Object) );
                 
                 $this->conexion->set_charset("utf8");
-                $sql = "INSERT INTO productos1 VALUES (null, '{$jsonOBJ->nombre}', '{$jsonOBJ->marca}', '{$jsonOBJ->modelo}', {$jsonOBJ->precio}, '{$jsonOBJ->detalles}', {$jsonOBJ->unidades}, '{$jsonOBJ->imagen}', 0)";
+                $sql = "INSERT INTO productos VALUES (null, '{$jsonOBJ->nombre}', '{$jsonOBJ->marca}', '{$jsonOBJ->modelo}', {$jsonOBJ->precio}, '{$jsonOBJ->detalles}', {$jsonOBJ->unidades}, '{$jsonOBJ->imagen}', 0)";
                 if($this->conexion->query($sql)){
                     $this->data['status'] =  "success";
                     $this->data['message'] =  "Producto agregado";
@@ -39,7 +39,7 @@
                 'message' => 'La consulta falló'
             );
             if( isset($id) ) {
-                $sql = "UPDATE productos1 SET eliminado=1 WHERE id = {$id}";
+                $sql = "UPDATE productos SET eliminado=1 WHERE id = {$id}";
                 if ( $this->conexion->query($sql) ) {
                     $this->data['status'] =  "success";
                     $this->data['message'] =  "Producto eliminado";
@@ -57,7 +57,7 @@
             );
             if( isset($Object['id']) ) {
                 $jsonOBJ = json_decode( json_encode($Object) );
-                $sql =  "UPDATE productos1 SET nombre='{$jsonOBJ->nombre}', marca='{$jsonOBJ->marca}',";
+                $sql =  "UPDATE productos SET nombre='{$jsonOBJ->nombre}', marca='{$jsonOBJ->marca}',";
                 $sql .= "modelo='{$jsonOBJ->modelo}', precio={$jsonOBJ->precio}, detalles='{$jsonOBJ->detalles}',"; 
                 $sql .= "unidades={$jsonOBJ->unidades}, imagen='{$jsonOBJ->imagen}' WHERE id={$jsonOBJ->id}";
                 $this->conexion->set_charset("utf8");
@@ -72,7 +72,7 @@
         }
 
         public function list() {
-            if ( $result = $this->conexion->query("SELECT * FROM productos1 WHERE eliminado = 0") ) {
+            if ( $result = $this->conexion->query("SELECT * FROM productos WHERE eliminado = 0") ) {
                 $rows = $result->fetch_all(MYSQLI_ASSOC);
         
                 if(!is_null($rows)) {
@@ -91,7 +91,7 @@
 
         public function search($search) {
             if( isset($search) ) {
-                $sql = "SELECT * FROM productos1 WHERE (id = '{$search}' OR nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%') AND eliminado = 0";
+                $sql = "SELECT * FROM productos WHERE (id = '{$search}' OR nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%') AND eliminado = 0";
                 if ( $result = $this->conexion->query($sql) ) {
                     $rows = $result->fetch_all(MYSQLI_ASSOC);
         
@@ -112,7 +112,7 @@
 
         public function single($id) {
             if( isset($id) ) {
-                if ( $result = $this->conexion->query("SELECT * FROM productos1 WHERE id = {$id} AND eliminado = 0") ) {
+                if ( $result = $this->conexion->query("SELECT * FROM productos WHERE id = {$id} AND eliminado = 0") ) {
                     $row = $result->fetch_assoc();
         
                     if(!is_null($row)) {
@@ -130,7 +130,7 @@
 
         public function singleByName($nombre) {
             if( isset($nombre) ) {
-                $sql = "SELECT * FROM productos1 WHERE (nombre LIKE '%{$nombre}%' AND eliminado = 0)";
+                $sql = "SELECT * FROM productos WHERE (nombre LIKE '%{$nombre}%' AND eliminado = 0)";
                 if ( $result = $this->conexion->query($sql) ) {
                     $rows = $result->fetch_all(MYSQLI_ASSOC);
         
