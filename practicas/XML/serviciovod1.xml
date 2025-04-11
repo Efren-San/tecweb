@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CatalogoVOD SYSTEM "mensaje.dtd">
+<CatalogoVOD> 
+    <Cuenta>
+        <correo>elprimercirculo1@gmail.com</correo>
+        <perfiles>
+            <perfil>
+                <usuario>Papa</usuario>
+                <idioma>Español</idioma>
+            </perfil>
+            <perfil>
+                <usuario>Little Jhon</usuario>
+                <idioma>Inglés</idioma>
+            </perfil>
+        </perfiles>
+    </Cuenta>
+
+    <Contenido>
+        <peliculas>
+            <genero>
+                <nombre>Acción</nombre>
+                <titulo>
+                    <nombre>Matrix</nombre>
+                    <duracion>136</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>John Wick</nombre>
+                    <duracion>101</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Mad Max</nombre>
+                    <duracion>120</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Terminator</nombre>
+                    <duracion>107</duracion>
+                </titulo>
+            </genero>
+
+            <genero>
+                <nombre>Comedia</nombre>
+                <titulo>
+                    <nombre>Jhonny English</nombre>
+                    <duracion>113</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>La Máscara</nombre>
+                    <duracion>101</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Sí Señor</nombre>
+                    <duracion>104</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Deadpool</nombre>
+                    <duracion>108</duracion>
+                </titulo>
+            </genero>
+        </peliculas>
+
+        <programas>
+            <genero>
+                <nombre>Policíaco</nombre>
+                <titulo>
+                    <nombre>El Novato</nombre>
+                    <duracion>43</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>CSI: Miami</nombre>
+                    <duracion>42</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>NCIS</nombre>
+                    <duracion>44</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Blue Bloods</nombre>
+                    <duracion>45</duracion>
+                </titulo>
+            </genero>
+
+            <genero>
+                <nombre>Comedia</nombre>
+                <titulo>
+                    <nombre>Brooklyn Nine-Nine</nombre>
+                    <duracion>22</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Parks and Recreation</nombre>
+                    <duracion>22</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Office</nombre>
+                    <duracion>22</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>How I Met Your Mother</nombre>
+                    <duracion>22</duracion>
+                </titulo>
+            </genero>
+        </programas>
+    </Contenido>
+</CatalogoVOD>

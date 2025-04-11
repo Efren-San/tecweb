@@ -1,0 +1,23 @@
+<!-- Elemento raíz -->
+<!ELEMENT CatalogoVOD (Cuenta, Contenido)>
+
+<!-- Sección de la cuenta -->
+<!ELEMENT Cuenta (correo, perfiles)>
+<!ELEMENT correo (#PCDATA)>
+<!ELEMENT perfiles (perfil+)>
+<!ELEMENT perfil (usuario, idioma)>
+<!ELEMENT usuario (#PCDATA)>
+<!ELEMENT idioma (#PCDATA)>
+
+<!-- Sección de contenido -->
+<!ELEMENT Contenido (peliculas, programas)>
+
+<!-- Películas -->
+<!ELEMENT peliculas (genero+)>
+<!ELEMENT genero (nombre, titulo+)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT titulo (nombre, duracion)>
+<!ELEMENT duracion (#PCDATA)>
+
+<!-- Programas -->
+<!ELEMENT programas (genero+)>

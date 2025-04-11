@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mensaje SYSTEM "mensaje.dtd">
+<CatalogoVOD> 
+    <Cuenta>
+        <correo></correo>
+        <perfiles>
+            <perfil>
+                <usuario></usuario>
+                <idioma></idioma>
+            </perfil>
+        </perfiles>
+    </Cuenta>
+
+    <Contenido>
+        <peliculas>
+            <genero> 
+                <nombre></nombre>
+
+                <titulo>
+                    <nombre></nombre>
+                    <duracion></duracion>
+                </titulo>
+            </genero>
+        </peliculas>
+
+        <programas>
+            <genero>
+                <nombre></nombre>
+
+                <titulo>
+                    <nombre></nombre>
+                    <duracion></duracion>
+                </titulo>
+            </genero>
+        </programas>
+    </Contenido>
+
+</CatalogoVOD>
