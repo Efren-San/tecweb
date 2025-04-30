@@ -16,7 +16,7 @@ class ComposerStaticInitf14b56480752e2f3ceb505cbd59c3a2e
     public static $prefixDirsPsr4 = array (
         'Backend\\MyApi\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/myapi',
+            0 => __DIR__ . '/../..' . '/producto_app/backend/myapi',
         ),
     );
 
