@@ -3,10 +3,10 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
-use Backend\MyApi\Create\Create;
-use Backend\MyApi\Read\Read;
-use Backend\MyApi\Update\Update;
-use Backend\MyApi\Delete\Delete;
+use backend\myapi\Create\Create;
+use backend\myapi\Read\Read;
+use backend\myapi\Update\Update;
+use backend\myapi\Delete\Delete;
 
 require __DIR__ . '/vendor/autoload.php';
 
