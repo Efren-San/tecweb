@@ -1,30 +1,28 @@
-<?php namespace Backend\MyApi;
-
-abstract class DataBase {
-    protected $conexion;
-    protected $data = NULL;
-
-    public function __construct($db, $user, $pass) {
+<?php
+ namespace MYAPI;
+ abstract class DataBase {
+     
+     protected $conexion;
+     protected $data;
+     
+     public function __construct($user, $pass, $db) {
         $this->conexion = @mysqli_connect(
-            'localhost',
-            $user,
-            $pass,
+            'localhost', 
+            $user, 
+            $pass, 
             $db
-        );
-    
-        /**
-         * NOTA: si la conexión falló $conexion contendrá false
-         **/
-        if(!$this->conexion) {
-            die('¡Base de datos NO conextada!');
-        }
-        /*else {
-            echo 'Base de datos encontrada';
-        }*/
+         );
+        if (!$this->conexion) {   
+             die('¡Base de datos no encontrada!') ;
+          }
+        $this->data= [];
     }
 
-    public function getData() {
-        return json_encode($this->data, JSON_PRETTY_PRINT);
+    public function getData(){
+        $jsonData = json_encode($this->data, JSON_PRETTY_PRINT);
+        return $jsonData;
     }
-}
-?>
+
+         
+ }
+ ?>

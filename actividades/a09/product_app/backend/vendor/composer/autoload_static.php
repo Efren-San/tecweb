@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a
+class ComposerStaticInit7ffc897e0ba3a412524593c192d64b82
 {
     public static $files = array (
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
@@ -13,10 +13,6 @@ class ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a
     );
 
     public static $prefixLengthsPsr4 = array (
-        'T' => 
-        array (
-            'TECWEB\\MYAPI\\' => 13,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -35,6 +31,10 @@ class ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a
             'Nyholm\\Psr7\\' => 12,
             'Nyholm\\Psr7Server\\' => 18,
         ),
+        'M' => 
+        array (
+            'MYAPI\\' => 6,
+        ),
         'F' => 
         array (
             'Fig\\Http\\Message\\' => 17,
@@ -43,10 +43,6 @@ class ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a
     );
 
     public static $prefixDirsPsr4 = array (
-        'TECWEB\\MYAPI\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/myapi',
-        ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
@@ -85,6 +81,10 @@ class ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
         ),
+        'MYAPI\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Myapi',
+        ),
         'Fig\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/http-message-util/src',
@@ -107,9 +107,9 @@ class ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit327d19b2fd8ff70a8528e03cd2529f5a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7ffc897e0ba3a412524593c192d64b82::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7ffc897e0ba3a412524593c192d64b82::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit7ffc897e0ba3a412524593c192d64b82::$classMap;
 
         }, null, ClassLoader::class);
     }
